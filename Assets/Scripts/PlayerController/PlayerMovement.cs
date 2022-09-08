@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    public UnityEvent JumpEvent;
+
+
 
     // Update is called once per frame
     void Update()
@@ -23,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            if (controller.IsPlayerGrounded())
+            {
+                JumpEvent.Invoke();
+            }
             jump = true;
             animator.SetBool("isJumping", true);
         }

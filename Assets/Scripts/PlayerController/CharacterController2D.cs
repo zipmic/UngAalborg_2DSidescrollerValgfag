@@ -60,6 +60,10 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+	public bool IsPlayerGrounded()
+	{
+		return m_Grounded;
+	}
 
 	public void Move(float move, bool crouch, bool jump)
 	{
