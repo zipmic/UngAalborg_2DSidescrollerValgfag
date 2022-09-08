@@ -29,15 +29,21 @@ public class Health : MonoBehaviour
 
 		if (!_invincible)
 		{
-			StartCoroutine(BlinkEffect());
-			EventWhenReceivingDamage.Invoke();
 			PlayerHealth -= amount;
+
 			if (PlayerHealth <= 0 && !_isDead)
 			{
 				PlayerHealth = 0;
 				_isDead = true;
 				EventWhenZeroHealth.Invoke();
 			}
+			else
+			{
+				StartCoroutine(BlinkEffect());
+				EventWhenReceivingDamage.Invoke();
+				
+			}
+			
 		}
 	}
 
