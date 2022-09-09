@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4858004912915151642}
   - component: {fileID: 8827421781069681450}
-  - component: {fileID: 5459967656613023492}
   - component: {fileID: 4646586907980458615}
   - component: {fileID: 4646586907980458616}
   - component: {fileID: 4646586907980458620}
+  - component: {fileID: 2171967319780036867}
+  - component: {fileID: 302510282}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5656914402580101492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.472, y: -0.037, z: 0}
-  m_LocalScale: {x: 0.3874241, y: 0.3874241, z: 0.3874241}
+  m_LocalScale: {x: 0.11969687, y: 0.11969687, z: 0.11969687}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 06e58f2d9b33b4843a57be1c7e554ee2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53831ffd2c1064d07b3fcc10982b1e0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5459967656613023492
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5656914402580101492}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1555521}
-  serializedVersion: 2
-  m_Radius: 1.1494477
 --- !u!114 &4646586907980458615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a23338e6545c984a9e1ba0ebadfb59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AmountOfPointsToAdd: 1
 --- !u!114 &4646586907980458620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +128,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerTag: Player
   SFXToPlay: {fileID: 8300000, guid: d36f5d68dc3ae3446bfb6ef59dc1ce2e, type: 3}
+  PlayOnce: 0
+--- !u!58 &2171967319780036867
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656914402580101492}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000009536743, y: 0.00000011920929}
+  serializedVersion: 2
+  m_Radius: 2.5599997
+--- !u!114 &302510282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656914402580101492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3ddb86822df234f9390acee8e06f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 0
+    m_RotationOrder: 4
+  Speed: 1
+  DistanceAdjuster: 0.1

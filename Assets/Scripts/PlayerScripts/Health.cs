@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 	public int MaxPlayerHealth;
 	public int PlayerHealth = 3;
 	public UnityEvent EventWhenReceivingDamage;
+	public UnityEvent EventWhenReceivingHealth;
 	public UnityEvent EventWhenZeroHealth;
 
 	private bool _invincible;
@@ -26,24 +27,35 @@ public class Health : MonoBehaviour
 
 	public void ChangeHealth(int amount)
 	{
-
-		if (!_invincible)
+		if (amount > 0)
 		{
-			PlayerHealth -= amount;
+			PlayerHealth += amount;
+			if (PlayerHealth > MaxPlayerHealth)
+			{
+				PlayerHealth = MaxPlayerHealth;
+			}
+			EventWhenReceivingHealth.Invoke();
+		}
+		else
+		{
+			if (!_invincible)
+			{
+				PlayerHealth += amount;
 
-			if (PlayerHealth <= 0 && !_isDead)
-			{
-				PlayerHealth = 0;
-				_isDead = true;
-				EventWhenZeroHealth.Invoke();
+				if (PlayerHealth <= 0 && !_isDead)
+				{
+					PlayerHealth = 0;
+					_isDead = true;
+					EventWhenZeroHealth.Invoke();
+				}
+				else
+				{
+					StartCoroutine(BlinkEffect());
+					EventWhenReceivingDamage.Invoke();
+
+				}
+
 			}
-			else
-			{
-				StartCoroutine(BlinkEffect());
-				EventWhenReceivingDamage.Invoke();
-				
-			}
-			
 		}
 	}
 

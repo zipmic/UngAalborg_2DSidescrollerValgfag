@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTrigger_DamageHealth : MonoBehaviour
+public class OnTrigger_ChangeHealth : MonoBehaviour
 {
     public string TriggerTag = "Player";
-	public bool OnlyDamageOnce;
-	public int AmountOfDamage = 1;
+	public bool OnlyApplyOnce;
+	public int AmountOfChange = 1;
 
 	private bool _once;
 	private bool _isColliding;
@@ -16,12 +16,12 @@ public class OnTrigger_DamageHealth : MonoBehaviour
 		if (_isColliding) return;
 		if (collision.tag == TriggerTag && !_once)
 		{
-			if (OnlyDamageOnce)
+			if (OnlyApplyOnce)
 			{
 				_once = true;
 			}
 
-			collision.GetComponent<Health>().ChangeHealth(AmountOfDamage);
+			collision.GetComponent<Health>().ChangeHealth(AmountOfChange);
 			_isColliding = true;
 			StartCoroutine(Reset());
 	}
